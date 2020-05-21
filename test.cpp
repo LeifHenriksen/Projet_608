@@ -4,6 +4,7 @@
 #include <vector>
 #include <chrono> 
 #include "naive.h"
+#include "boyer_moore.h"
 using namespace std;
 using namespace std::chrono; 
 
@@ -68,14 +69,11 @@ int main(int argc, char* argv[]){
     } else if (fct == "boyermoore"){
       cout<<"Utilisation de l'algo de Boyer Moore"<<endl;
       cout<<"=================================="<<endl;
-      //start = high_resolution_clock::now();
-      //for(int i=0;i<nbTest;i++){
-      //   line = searchBM(path, chaine);       /*  Ajouter les headers pour cette fonction  */
-      //} 
-      //stop = high_resolution_clock::now(); 
-
-      cout<<"Not yet implemented.."<<endl;
-      return 1;
+      start = high_resolution_clock::now();
+      for(int i=0;i<nbTest;i++){
+        line = searchBM(path, chaine);
+      } 
+      stop = high_resolution_clock::now(); 
     } else {
       usage("Fonction/Algorithme incorrect !", argv[0]);
       return 1;

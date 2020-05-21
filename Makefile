@@ -3,7 +3,7 @@ CFLAGS := -Wall -g
 TARGET := test
 
 
-SRCS := $(wildcard naive.cpp test.cpp)
+SRCS := $(wildcard naive.cpp boyer_moore.cpp test.cpp)
 OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 
 all: $(TARGET)
