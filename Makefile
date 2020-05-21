@@ -1,29 +1,15 @@
-########################################
-#~ définitions
-########################################
-
-# nom de l'executable
-BIN=naive #boyer_moore
+CC := g++
+CFLAGS := -Wall -g
+TARGET := test
 
 
-# liste des fichiers sources 
-SRCS0=naive.cpp
-#SRCS1=boyer_moore.cpp
+SRCS := $(wildcard naive.cpp test.cpp)
+OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 
-default: $(BIN)
-
-########################################
-#~ regles pour l'executable
-########################################
-
+all: $(TARGET)
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $^
 %.o: %.cpp
-	g++ -Wall -Iinclude -c $< -o $@
-
-naive: $(SRCS0:%.c=%.o)
-	g++ -Wall -lpthread -o $@ $+
-
-#boyer_moore: $(SRCS1:%.c=%.o)
-#	g++ -Wall -lpthread -o $@ $+
-
+	$(CC) $(CFLAGS) -c $<
 clean:
-	rm -f $(BIN) *.o *~
+	rm -rf $(TARGET) *.o

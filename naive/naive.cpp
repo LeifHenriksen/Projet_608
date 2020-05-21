@@ -1,10 +1,27 @@
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
-#include "naive.h"
 using namespace std;
 
-int* searchN(string pathRead, string search){
+void usage(const char *msg, char *progname) {
+  printf("\n%s\n\n"
+	 "usage : %s <file> \"<string>\"\n"
+	 "  Avec <file> : le chemin du fichier à analyser\n"
+     "  Et <string> : la chaine à tester entre \" \"\n"
+	 , msg, progname);
+}
+
+bool existsFile (string& path) {
+    if (FILE *file = fopen(path.c_str(), "r")) {
+        fclose(file);
+        return true;
+    } else {
+        return false;
+    }   
+}
+
+int* search(string pathRead, string search){
     ifstream fileRead;                  // On ouvre le ficier en lecture
     string toFind = search;
     fileRead.open(pathRead);
@@ -40,3 +57,25 @@ int* searchN(string pathRead, string search){
     return tabLine;
 }
 
+int main(int argc, char* argv[]){
+    if(argc != 3) {
+        usage("Mauvaise utilisation !", argv[0]);
+        return 1;
+    }
+    
+    string chaine = argv[2];
+    string path = argv[1];
+
+    if(!existsFile(path)) {
+        usage("Fichier introuvable !", argv[0]);
+        return 1;
+    }
+
+    int* line = search(path, chaine);
+    cout<<"Il y a "<<line[0]<<" occurence(s) de la chaine \""<<chaine<<"\""<<endl;
+    for(int i=1;i<=line[0];i++){
+        cout<<"..at line "<<line[i]<<endl;
+    }
+
+
+}
