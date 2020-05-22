@@ -1,1 +1,4 @@
-L'algorithme de Boyer-Moore pré-traite la sous-chaîne « clé » (c'est-à-dire la chaîne recherchée), et non pas le texte (c'est-à-dire la chaîne dans laquelle la recherche est effectuée), à l'inverse de certains algorithmes, qui amortissent le coût du prétraitement du texte en effectuant de très nombreuses recherches répétitives. Le coût d'exécution de l'algorithme de Boyer-Moore peut être sous-linéaire, c'est-à-dire qu'il n'a pas besoin de vérifier chacun des caractères du texte, mais peut au contraire sauter certains d'entre eux. En général, l'algorithme devient plus rapide lorsque la longueur de la sous-chaîne s'allonge. 
+Hi this is a test,
+This test is very cool !
+You can test our program on this test
+Because this is a test !

@@ -91,5 +91,5 @@ int main(int argc, char* argv[]){
     auto duration = duration_cast<microseconds>(stop - start); 
     cout<<endl;
     cout<<"=================================="<<endl;
-    cout<<"Temps d'execution : "<<duration.count()<<"nano-secondes."<<endl; 
+    cout<<"Temps d'execution : "<<duration.count()<<" ms."<<endl; 
 }
