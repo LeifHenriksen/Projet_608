@@ -212,7 +212,7 @@ extern "C"
 int* searchBM(std::string pathRead, std::string search)
 {
   int* tabIndice = new int[5000]; //A modifier
-  boyer_moore_fichier(pathRead.c_str(), search.c_str(), tabLine);
+  boyer_moore_fichier(pathRead.c_str(), search.c_str(), tabIndice);
 
   return tabIndice;
 }
