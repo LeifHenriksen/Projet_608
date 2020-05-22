@@ -1,9 +1,9 @@
 CC := g++
 CFLAGS := -Wall -g
-TARGET := boyer_moore
+TARGET := run
 
 
-SRCS := $(wildcard naive.cpp boyer_moore.cpp test.cpp)
+SRCS := $(wildcard naive.cpp boyer_moore.cpp main.cpp)
 OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 
 all: $(TARGET)

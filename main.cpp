@@ -66,7 +66,11 @@ int main(int argc, char* argv[]){
       for(int i=0;i<nbTest;i++){
         line = searchN(path, chaine);
       }
-      stop = high_resolution_clock::now(); 
+      stop = high_resolution_clock::now();
+      cout<<"Il y a "<<line[0]<<" occurence(s) de la chaine \""<<chaine<<"\""<<endl;
+      for(int i=1;i<=line[0];i++){
+          cout<<"..at line "<<line[i]<<endl;
+      }
     } else if (fct == "boyermoore"){
       cout<<"Utilisation de l'algo de Boyer Moore"<<endl;
       cout<<"=================================="<<endl;
@@ -75,16 +79,13 @@ int main(int argc, char* argv[]){
         line = searchBM(path, chaine);
       } 
       stop = high_resolution_clock::now(); 
+      cout<<"Il y a "<<line[0]<<" occurence(s) de la chaine \""<<chaine<<"\""<<endl;
+      for(int i=1;i<=line[0];i++){
+          cout<<"..at index "<<line[i]<<endl;
+      }
     } else {
       usage("Fonction/Algorithme incorrect !", argv[0]);
       return 1;
-    }
-
-    
-    
-    cout<<"Il y a "<<line[0]<<" occurence(s) de la chaine \""<<chaine<<"\""<<endl;
-    for(int i=1;i<=line[0];i++){
-        cout<<"..at line "<<line[i]<<endl;
     }
 
     auto duration = duration_cast<microseconds>(stop - start); 
