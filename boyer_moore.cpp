@@ -147,6 +147,7 @@ extern "C"
 	    str[i] = c;
 	    i++;
 	  }
+	str[i] = '\0';
 	fclose(file);
       }
     
@@ -167,10 +168,11 @@ extern "C"
 	tab_occu[0] = nb_occu;
 	return;
       }
-
+    printf("taille fichier = %i \n", taille_string);
     int i = taille_motif - 1;
     while (i < taille_string)
       {
+	printf("i = %i \n", i);
 	int j = taille_motif - 1; 
 	int debut = i;
 	while (j >= 0 && (str[i] == motif[j]))
@@ -184,34 +186,30 @@ extern "C"
 	if (j < 0)
 	  {
 	    nb_occu++;
-	    tab_occu[nb_occu] = i+1; 
+	    tab_occu[nb_occu] = i+1;
+	    i = i + 1 + taille_motif;
 	  }
-	
-	int shift = 0;
-	if(bad_char[str[debut]] > good_suffix[taille_motif - j - 1])
-	  {
-	    shift = bad_char[str[debut]];
-	  }
-	else
-	  {
-	    shift = good_suffix[taille_motif - j - 1];
-	  }
-	
-	//printf("patlen - j = %i, j = %i, delta1 = %i, delta2 = %i, shift = %i\n",
-	//     taille_motif - j, j, bad_char[str[debut]], good_suffix[taille_motif - j - 1], shift);
 
-	i = debut + shift;
-
-	//printf("i = %i\n", i);
+	    int shift = 0;
+	    if(bad_char[str[debut]] > good_suffix[taille_motif - j - 1])
+	      {
+		shift = bad_char[str[debut]];
+		printf("shift bad = %i \n", shift);
+	      }
+	    else
+	      {
+		shift = good_suffix[taille_motif - j - 1];
+		printf("shift good = %i, j = %i \n", shift, j);
+	      }
+	    i = debut + shift;
       }
-
     tab_occu[0] = nb_occu;
   }
 }
 
 int* searchBM(std::string pathRead, std::string search)
 {
-  int* tabIndice = new int[5000]; //A modifier
+  int* tabIndice = new int[50000]; //A modifier
   boyer_moore_fichier(pathRead.c_str(), search.c_str(), tabIndice);
 
   return tabIndice;
