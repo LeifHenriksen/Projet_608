@@ -1,6 +1,6 @@
 CC := g++
 CFLAGS := -Wall -g
-TARGET := test
+TARGET := boyer_moore
 
 
 SRCS := $(wildcard naive.cpp boyer_moore.cpp test.cpp)
@@ -8,8 +8,8 @@ OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 
 all: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) -o $@ $^
+	$(CC) -std=c++11 -o $@ $^
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -std=c++11 -c $<
 clean:
 	rm -rf $(TARGET) *.o

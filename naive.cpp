@@ -7,7 +7,7 @@ using namespace std;
 int* searchN(string pathRead, string search){
     ifstream fileRead;                  // On ouvre le ficier en lecture
     string toFind = search;
-    fileRead.open(pathRead);
+    fileRead.open(pathRead.c_str());
     
     unsigned int sameChar=0;            // Nombre de caractère identique (on commence à zéro)
     int line=1;                         // Compteur de ligne (on commence à 1)

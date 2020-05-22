@@ -2,7 +2,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <chrono> 
+#include <chrono>
+#include <stdlib.h>
 #include "naive.h"
 #include "boyer_moore.h"
 using namespace std;
